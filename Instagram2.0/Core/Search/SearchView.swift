@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+
 struct SearchView: View {
     
     @State private var searchText = ""
