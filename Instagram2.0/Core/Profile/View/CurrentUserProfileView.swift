@@ -10,10 +10,7 @@ import SwiftUI
 struct CurrentUserProfileView: View {
 
     let user: User
-    
-    var posts: [Post] {
-        return Post.MOCK_POSTS.filter({ $0.ownerUid == user.id })
-    }
+
     
     var body: some View {
         
@@ -23,7 +20,7 @@ struct CurrentUserProfileView: View {
                 ProfileHeaderView(user: user)
                 
                 // post grid view
-                PostGridView(posts: posts)
+                PostGridView(user: user)
                 
             }
             .navigationTitle("Profile")
@@ -31,7 +28,7 @@ struct CurrentUserProfileView: View {
             .toolbar {
                 ToolbarItem (placement: .navigationBarTrailing) {
                     Button {
-                        
+                        AuthService.shared.signOut()
                     } label: {
                         Image(systemName: "line.3.horizontal")
                             .foregroundColor(.black)
